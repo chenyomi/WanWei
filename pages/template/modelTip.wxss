@@ -1,0 +1,6 @@
+.model-tip {position:fixed; left:0 ;top:0; width:100%; height:100%; background:rgba(33,33,33,.7);display:flex;z-index:900}
+.model-tip .box {margin:auto;background:#fff; width:70%; border-radius:6rpx;padding:40rpx; z-index: 999}
+.model-tip .box .title{font-size:34rpx; text-align: center}
+.model-tip .box .intro{font-size:30rpx;margin-top:30rpx}
+.model-tip .box .bt{font-size:26rpx;  color: limegreen;margin-top:30rpx; text-align:center; border: none; outline: none;line-height: 40rpx; background:none}
+.model-tip .box .bt::after {content:none; background: none}

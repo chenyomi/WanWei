@@ -1,0 +1,306 @@
+<block wx:if="{{showLoading}}">
+  <block wx:if="{{IsDelete == 'False' || IsEnable== 'True' || IsClosed == 'False'}}">
+    <view class="erro">
+      <image src="../../images/delbg.png" mode="widthFix" style="width:100%;margin:auto" catchtap="backpage"></image>
+    </view>
+  </block>
+  <block wx:else>
+    <block wx:if="{{showAnimate}}">
+      <view class="loadAnimate fadeOut">
+        <image src="../../images/loading.png" class="bg-icon" style="margin:auto"></image>
+      </view>
+    </block>
+    <block wx:if="{{IsShowShare!==0}}">
+      <view style="height: 50px; width: 50px; top:48%;left:85%;z-index:998;position:fixed ">
+        <button open-type="share">
+          <image src="../../images/share.png" class="xs-icon"></image>
+        </button>
+      </view>
+    </block>
+    <view class="container">
+      <!--<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:100%;overflow:hidden">-->
+      <view class="list-scroll">
+        <view class="details">
+          <view class="detail">
+            <!--食材-->
+            <block wx:if="{{Article.AdType == 3}}">
+              <image src="{{ImgUrl}}{{Article.PicPath}}" mode="aspectFill" style="width:100%;height:150px;"></image>
+              <view class="article">{{Article.Title}}</view>
+              <view class="article-tip">阅读 <text>{{Article.VisitCount}}</text> </view>
+            </block>
+
+            <!--报名-->
+            <block wx:if="{{Article.AdType == 2}}">
+              <view class="group">
+                <image src="{{ImgUrl}}{{Article.PicPath}}" mode="widthFix" style="width:100%"></image>
+                <view class="group-pos">
+                  <view class="title">{{Article.Title}}</view>
+                  <view class="tag">
+                    <text>报名数：{{SignUpCount}}</text>
+                    <text>阅读：{{Article.VisitCount}}</text>
+                  </view>
+                </view>
+                <view class="bg-pos"></view>
+              </view>
+              <block wx:if="{{second>0}}">
+                <view class="box-row showTimer" style="align-items: center">
+                  <view class="flex-3" style="border-right:1rpx solid #f0f0f0">
+                    <view class="text-center time-tip">距结束仅剩</view>
+                    <view class="timer">
+                      <text class="sec {{day == '0'?'hide':''}}">{{day}}天</text>
+                      <text class="{{day == '0'?'hide':''}}">：</text>
+                      <text class="sec {{day == '0'&& hr == '0' ?'hide':''}}">{{hr}}</text>
+                      <text class="{{day == '0'&& hr == '0' ?'hide':''}}">：</text>
+                      <text class="sec {{day == '0'&& hr == '0'&& min == '0' ?'hide':''}}">{{min}}</text>
+                      <text class="{{day == '0'&& hr == '0'&& min == '0' ?'hide':''}}">：</text>
+                      <text class="sec">{{sec}}</text>
+                    </view>
+                  </view>
+                  <!-- <view class="flex-2">
+                     <view class="right-text">{{Article.SignUpCount}}人成团</view>
+                    <view class="right-text">剩余<text style="color:#ff7519">{{differenceCount}}人</text> </view>
+                  </view> -->
+                </view>
+              </block>
+            </block>
+            <!--美文-->
+            <block wx:if="{{Article.AdType == 1}}">
+              <!-- <image src="../../images/detiail_banner.jpg" mode="widthFix" style="width:100%"></image> -->
+              <view class="article">{{Article.Title}}</view>
+
+              <view class="article-tip">
+                阅读 <text>{{Article.VisitCount}}</text>
+              </view>
+            </block>
+          </view>
+          <!--报名-->
+          <block wx:if="{{Article.AdType == 2}}">
+            <view class="signUpInfo" style="margin-bottom:16rpx;">
+              <view class="box-row">
+                <view style="color:#878787">行程简介</view>
+              </view>
+              <!-- <view hidden="{{IsCanSignUp == 0}}" class="box-row">
+                <view class="flex-1 text-left">
+                  出发日期
+                </view>
+                <view class="flex-1 text-right">
+                  {{Article.SignUpBeginTime}}
+                </view>
+              </view> -->
+              <!-- <view class="box-row">
+                <view class="flex-1 text-left">
+                  费用
+                </view>
+                <view class="flex-1 text-right">
+                  ￥{{Article.SignUpMoney}}
+                </view>
+              </view> -->
+
+              <view class="box-row">
+                <view class="flex-1 text-left">
+                  地点
+                </view>
+                <view class="flex-1 text-right">
+                  {{Article.SignUpAddress}}
+                </view>
+              </view>
+            </view>
+          </block>
+          <!--报名-->
+          <block wx:if="{{IsCanSignUp == 2 ||IsCanSignUp == 3}}">
+            <view class="box-row tab">
+              <view class="flex-1 {{tabToggle == 0?'active':''}}" style="border-right:1rpx solid #e8e8e8" catchtap="tabToggle0">
+                一日行程
+              </view>
+              <view class="flex-1 {{tabToggle == 1?'active':''}}" catchtap="tabToggle1">
+                报名须知
+              </view>
+            </view>
+          </block>
+          <view class="content {{tabToggle == 0 ? 'show':'hide'}}" style="{{Article.AdType == 2?'margin-top:0;border-top:#e8e8e8 1rpx solid':''}}">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          </view>
+          <block wx:if="{{IsCanSignUp == 2 ||IsCanSignUp == 3}}">
+            <view class="content-2 {{tabToggle == 1 ? 'show':'hide'}}" style="border-top:#e8e8e8 1rpx solid">
+              <image src="../../images/detaqil.png" mode="widthFix" style="width:100%"></image>
+            </view>
+          </block>
+          <view id="the-id"></view>
+          <block wx:if="{{Article.AdType == 3}}">
+            <view class="box-row tab" style="border-bottom:1rpx solid #e8e8e8">
+              <view class="flex-1 {{showItem == 0?'active':''}}" style="border-right:1rpx solid #e8e8e8" catchtap="showMessage">
+                留言（{{Article.ComCount}}）
+              </view>
+              <view class="flex-1 {{showItem == 1?'active':''}}" catchtap="showTransaction">
+                购买记录（{{orderCount}}）
+              </view>
+            </view>
+          </block>
+          <block wx:if="{{showItem == 0}}">
+            <view class="message">
+              <view class="box-row" style="border-bottom: 1rpx solid #f0f0f0">
+                <view class="flex-1" style="padding: 0 30rpx;">
+                  留言（{{Article.ComCount}}）
+                </view>
+                <view class="flex-1 text-right" style="padding: 0 30rpx;" bindtap="goConment">
+                  <image src="../../images/submit.png" class="xs-icon"></image>
+                  我要留言
+                </view>
+              </view>
+              <block wx:for="{{CommentList}}" wx:key="{{ID}}" wx:for-item="item" wx:for-index="parentId">
+                <view class="box-row words">
+                  <view class="zan" data-id="{{item.ID}}" data-index="{{parentId}}" catchtap="{{item.CommendID==''||item.CommendID==0?'AddCommend':'DeleteCommend'}}">
+                    <block wx:if="{{item.CommendID==''||item.CommendID==0}}">
+                      <image src="../../images/zan01.png" style="width:45rpx;height:45rpx"></image>
+                    </block>
+                    <block wx:else>
+                      <image src="../../images/zan02.png" style="width:45rpx;height:45rpx"></image>
+                    </block>
+                    <block wx:if="{{item.CommendCount>0}}">
+                      <text class="active">{{item.CommendCount}}</text>
+                    </block>
+                  </view>
+                  <view class="flex-1">
+                    <image src="{{item.Headimgurl}}" class="bg-icon" style="border-radius: 50%"></image>
+                  </view>
+                  <view class="flex-4" style="overflow:auto">
+                    <view class="comment">
+                      {{item.RealName}}
+                      <view class="creatTime">
+                        {{item.CreateTime}}
+                      </view>
+                    </view>
+                    <view class="pin">
+                      <text class="comment"> 打分</text>
+                      <image src="{{item.StarScore>0?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                      <image src="{{item.StarScore>1?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                      <image src="{{item.StarScore>2?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                      <image src="{{item.StarScore>3?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                      <image src="{{item.StarScore>4?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                    </view>
+                    <text class="comment">{{item.Content}}</text>
+                    <view style="width:100%;overflow:auto">
+                      <scroll-view scroll-left="{{scrollLeft}}" scroll-x="true" style="width:{{item.imgSize}}px;overflow:hidden;z-index:900;margin-bottom:20rpx;">
+                        <block wx:for="{{item.ImgList}}" wx:key="{{ID}}" wx:for-item="item">
+                          <image src="{{ImgUrl}}{{item.Url}}" data-id="{{parentId}}" data-src="{{ImgUrl}}{{item.Url}}" class="bg-icon" mode="aspectFill" style="margin-right:10rpx;height:50px;width:50px" catchtap="viewImg"></image>
+                        </block>
+                      </scroll-view>
+                    </view>
+                  </view>
+                </view>
+                <block wx:if="{{item.IsReturn=='True'}}">
+                  <view class="box-row kefu">
+                    <view class="flex-1">
+                    </view>
+                    <view class="flex-4" style="border-top:1rpx solid #f9f9f9">
+                      <view style="padding-left:20rpx; border-left:5rpx solid #f45e38; line-height:26rpx; margin:20rpx 0 20rpx;">客服回复：</view>
+                      <view style="padding:0 20rpx; background:#f0f0f0;border-radius: 8rpx; display:block">{{item.ReturnMessage}}</view>
+                      <view class="creatTime">
+                        {{item.ReturnDate}}
+                      </view>
+                    </view>
+                  </view>
+                </block>
+
+              </block>
+              <block wx:if="{{hasMore_}}">
+                <view class="loading-tip">拼命加载中…</view>
+              </block>
+              <block wx:else>
+                <view class="loading-tip">没有更多内容了</view>
+              </block>
+              <view class="space-60"></view>
+            </view>
+          </block>
+          <block wx:elif="{{showItem == 1}}">
+            <view class="transaction">
+              <block wx:for="{{TransactionList}}" wx:key="{{ID}}" wx:for-item="item" wx:for-index="parentId">
+                <view class="box-row words">
+                  <view class="flex-1">
+                    <image src="{{item.Headimgurl}}" class="bg-icon" style="border-radius: 50%"></image>
+                  </view>
+                  <view class="flex-4">
+                    <view class="comment">{{item.LinkPhoneNew}}
+                      <text style="float:right; font-size:26rpx; color:#b2b2b2; line-height:40rpx;">{{item.PayDate}}</text>
+                    </view>
+                    <text class="comment">购买了 {{item.ArticleTitle}}</text>
+                  </view>
+                </view>
+
+              </block>
+              <block wx:if="{{hasMore}}">
+                <view class="loading-tip">拼命加载中…</view>
+              </block>
+              <block wx:else>
+                <view class="loading-tip">没有更多内容了</view>
+              </block>
+              <view class="space-60"></view>
+            </view>
+          </block>
+
+        </view>
+      </view>
+      <!--</scroll-view>-->
+      <view class="fixed-index">
+        <view class="box-row">
+          <view class="flex-2 bt" bindtap="gotolist" style="padding:15rpx 0 10rpx">
+            <image src="../../images/new_icon_01.png" class="sm-icon"></image>
+            <text>首页</text>
+          </view>
+          <view class="flex-2 bt" style="padding:15rpx 0 10rpx">
+            <block wx:if="{{collectionID>0}}">
+              <image src="../../images/new_icon_02_.png" bindtap="removeCollection" class="sm-icon"></image>
+              <block wx:if="{{Article.ColCount>0}}">
+                <text>{{Article.ColCount}}</text>
+              </block>
+            </block>
+            <block wx:if="{{collectionID==0}}">
+              <image src="../../images/new_icon_02.png" bindtap="addCollection" class="sm-icon "></image>
+              <block wx:if="{{Article.ColCount>0}}">
+                <text>{{Article.ColCount}}</text>
+              </block>
+            </block>
+          </view>
+          <view class="flex-2 bt" bindtap="getHeight" style="padding:15rpx 0 10rpx">
+            <image src="../../images/new_icon_03.png" class="sm-icon"></image>
+            <block wx:if="{{Article.ComCount>0}}">
+              <text>{{Article.ComCount}}</text>
+            </block>
+          </view>
+          <view class="flex-3" style="padding:0 20rpx;">
+            <block wx:if="{{Article.AdType == 3}}">
+              <view class="signup" catchtap="goOrderUp">
+                <image src="../../images/buy.png" class="xs-icon"></image>
+                <text style="vertical-align: middle;line-height:60rpx">我要购买</text>
+              </view>
+            </block>
+            <block wx:elif="{{Article.AdType == 2 && IsCanSignUp  >0}}">
+              <view class="signup" catchtap="{{IsCanSignUp == 2 ?'goSignUp':''}}" style="{{IsCanSignUp==2  ?'':'background:#d8d8d8'}}">
+                <image src="../../images/baom.png" class="xs-icon"></image>
+                <text style="vertical-align: middle;line-height:60rpx">
+                  <block wx:if="{{IsCanSignUp == 2}}">我要报名</block>
+                  <block wx:elif="{{IsCanSignUp == 3}}">报名结束</block>
+                </text>
+              </view>
+            </block>
+            <block wx:elif="{{Article.AdType == 2 && IsCanSignUp  ==0}}">
+              <view class="input" catchtap="goConment">我来说两句</view>
+            </block>
+            <block wx:elif="{{Article.AdType == 1}}">
+              <view class="input" catchtap="goConment">我来说两句</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class="erro">
+    <image src="../../images/nodata.png" mode="widthFix" style="width:100%;margin:auto" catchtap="backpage"></image>
+  </view>
+</block>
+
+
+
+<import src="../../wxParse/wxParse.wxml" />

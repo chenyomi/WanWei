@@ -1,0 +1,109 @@
+<block wx:if="{{showLoading}}">
+  <block wx:if="{{IsDelete}}">
+    <view class="erro">
+      <image src="../../images/delbg.png" mode="widthFix" style="width:100%;margin:auto" catchtap="backpage"></image>
+    </view>
+  </block>
+  <block wx:else>
+    <block wx:if="{{showAnimate}}">
+      <view class="loadAnimate fadeOut">
+        <image src="../../images/loading.png" class="bg-icon" style="margin:auto"></image>
+      </view>
+    </block>
+    <view class="container">
+      <!--<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;">-->
+      <view style="height:auto;  width:100%">
+        <view class="back-fff goodsDetail" style="margin-top:4rpx;width:100% ">
+          <view style="padding:0 30rpx">
+            <view class="box-row">
+              <view>
+                <image src="{{ImgUrl}}{{ShopsModel.BigLogoPicUrl}}" class="bg-icon"></image>
+              </view>
+              <view class="flex-1">
+                <view class="title">
+                  {{ShopsModel.Name}}
+                </view>
+                <view>
+                  <image src="../../images/qqq.png" class="xs-icon"></image>
+                  <text style="vertical-align: middle">人均{{ShopsModel.SellCount}}份</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="content">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+        <view class="message">
+          <view class="box-row" style="border-bottom: 1rpx solid #f0f0f0">
+            <view class="flex-1" style="padding: 0 30rpx;">
+              评价
+            </view>
+            <!--<view class="flex-1 text-right" style="padding: 0 30rpx;">
+            96%好评
+          </view>-->
+          </view>
+          <block wx:for="{{CommentList}}" wx:key="{{ID}}" wx:for-index="parentId" wx:for-item="item">
+            <view class="box-row words">
+              <view class="flex-1">
+                <image src="{{item.Headimgurl}}" class="bg-icon" style="border-radius: 50%"></image>
+              </view>
+              <view class="flex-4" style="overflow:auto">
+                <view class="comment">{{item.RealName}}</view>
+                <view class="pin">
+                  <text class="comment"> 打分</text>
+                  <image src="{{item.StarScore>0?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                  <image src="{{item.StarScore>1?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                  <image src="{{item.StarScore>2?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                  <image src="{{item.StarScore>3?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                  <image src="{{item.StarScore>4?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                </view>
+                <text class="comment">{{item.Content}}</text>
+                <view style="wdith:100%;overflow:auto">
+                  <scroll-view scroll-left="{{scrollLeft}}" scroll-x="true" style="width:{{item.imgSize}}px;overflow:hidden;z-index:900;margin-bottom:20rpx;">
+                    <block wx:for="{{item.ImgList}}" wx:key="{{ID}}" wx:for-item="ImgItem">
+                      <image src="{{ImgUrl}}{{ImgItem.Url}}" data-id="{{parentId}}" data-src="{{ImgUrl}}{{ImgItem.Url}}" class="bg-icon" mode="aspectFill" style="margin-right:10rpx;height:50px;width:50px" catchtap="viewImg"></image>
+                    </block>
+                  </scroll-view>
+                </view>
+              </view>
+            </view>
+            <view class="creatTime">
+              {{item.CreateTime}}
+            </view>
+          </block>
+
+          <view class="box-row" style="border-bottom: 1rpx solid #f0f0f0;">
+            <view class="flex-1" style="padding: 0 30rpx;">
+              共{{GoodsModel.ComCount}}条评论
+            </view>
+          </view>
+        </view>
+        <block wx:if="{{showTipLoading}}">
+          <block wx:if="{{hasMore}}">
+            <view class="loading-tip">拼命加载中…</view>
+          </block>
+          <block wx:else>
+            <view class="loading-tip">没有更多内容了</view>
+          </block>
+        </block>
+
+        <view class="space-50"></view>
+      </view>
+      <!--</scroll-view>-->
+      <view class="box-row" style="background:#fff;height:49px; align-items: center; border-top:1px solid #f0f0f0;position:fixed; left:0; bottom:0; width:100%;z-index:998">
+        <view class="flex-1">
+          <image src="../../images/home2.png" class="xs-icon" style="margin-left:30rpx;" catchtap="gohome"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class="erro">
+    <image src="../../images/nodata.png" mode="widthFix" style="width:100%;margin:auto" catchtap="backpage"></image>
+  </view>
+</block>
+
+
+<import src="../../wxParse/wxParse.wxml" />

@@ -1,0 +1,19 @@
+/* pages/order/orderList.wxss *//* pages/user/user.wxss */
+page{background:#fff;}
+.tab{color: #a8a8a8;text-align: center;font-size: 26rpx;line-height: 35px;background: #fff;height: 35px;width: 100%;z-index: 999;position: fixed; top: 0; left: 0}
+.active {border-bottom: 1px solid #000!important;color: #000; }
+.orderList{background: #fff;position: relative; padding: 60rpx 30rpx 40rpx;}
+.orderList .orderList-item {border:2rpx solid #f0f0f0;padding: 30rpx;}
+.orderList .title{font-size: 28rpx;line-height: 40rpx;display: block; color: cornflowerblue}
+.orderList .intro{font-size: 26rpx;line-height: 40rpx;display: block;color: #666}
+.orderList .price{font-size: 26rpx;line-height: 40rpx;display: block;color: #666}
+.orderList .tag{margin-right: 20rpx;margin-bottom: 15rpx;font-size: 22rpx;line-height: 40rpx;display: inline-block;color:#fff;background: #999;padding:  0 20rpx 0 15rpx;}
+.orderList .hover{background: #d33d3e!important;}
+.orderList .pay{background: mediumseagreen!important;}
+.orderList .unpay{background: darkgray!important;}
+.orderList .use{background: #67bf73}
+.orderList .cmt{background: mediumseagreen}
+.orderList .uncmt{background: orange}
+.loading-tip { width: 100%; height: 80rpx;line-height: 80rpx; text-align: center;color: #878787; font-size: 12px;}
+  
+

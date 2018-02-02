@@ -1,0 +1,9 @@
+
+@import "../../pages/template/tempList.wxss";
+.item{
+    background: #fff;
+    padding: 15rpx 30rpx;
+    box-sizing: border-box;
+    border-top: 1rpx solid #f0f0f0;
+    border-bottom: 1rpx solid #f0f0f0;
+}

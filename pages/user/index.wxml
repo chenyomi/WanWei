@@ -1,0 +1,61 @@
+<view class="container">
+  <view class="info">
+    <view class="pic">
+      <image src="{{Headimgurl}}"></image>
+      <view>{{RealName}}</view>
+        <view class='point-info'>{{Point}}  <text>积分</text></view>
+    </view>
+    <view class="box-row text-center state">
+      <view class="flex-1" catchtap="goCollectionList">
+        <view>{{UserInfo.ColCount}}</view>
+        <view style="color:#c3c3c3">收藏</view>
+      </view>
+      <view class="flex-1" catchtap="goVisitList">
+        <view>{{UserInfo.VisitCount}}</view>
+        <view style="color:#c3c3c3">阅读</view>
+      </view>
+      <view class="flex-1" catchtap="goCommentList">
+        <view>{{UserInfo.ComCount}}</view>
+        <view style="color:#c3c3c3">留言</view>
+      </view>
+    </view>
+  </view>
+  <view style="background:#fff;width:100%">
+    <!-- <view class="box-row infolist" catchtap="goBespeakList">
+      <view class="flex-1">我的预约</view>
+      <view class="flex-1 text-right">
+        <image src="../../images/arrow.png" class="xs-icon"></image>
+      </view>
+    </view> -->
+    <view class="box-row infolist" catchtap="goSignUpList">
+      <view class="flex-1">我的报名</view>
+      <view class="flex-1 text-right">
+        <image src="../../images/arrow.png" class="xs-icon"></image>
+      </view>
+    </view>
+    <view class="box-row infolist" catchtap="goOrderList">
+      <view class="flex-1">我的食材</view>
+      <view class="flex-1 text-right">
+        <image src="../../images/arrow.png" class="xs-icon"></image>
+      </view>
+    </view>
+    <view class="box-row infolist" catchtap="goAddress">
+      <view class="flex-1">我的收货地址</view>
+      <view class="flex-1 text-right">
+        <image src="../../images/arrow.png" class="xs-icon"></image>
+      </view>
+    </view>
+    <view class="box-row infolist" catchtap="goSetting">
+      <view class="flex-1">我的授权</view>
+      <view class="flex-1 text-right">
+        <image src="../../images/arrow.png" class="xs-icon"></image>
+      </view>
+    </view>
+    <button  open-type="contact" class="box-row infolist">
+      <view class="flex-1 text-left">客服</view>
+      <view class="flex-1 text-right">
+       <image src="../../images/arrow.png" class="xs-icon"></image>
+      </view>
+    </button>
+  </view>
+</view>

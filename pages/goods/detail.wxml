@@ -1,0 +1,176 @@
+<block wx:if="{{showLoading}}">
+  <block wx:if="{{IsDelete}}">
+    <view class="erro">
+      <image src="../../images/delbg.png" mode="widthFix" style="width:100%;margin:auto" catchtap="backpage"></image>
+    </view>
+  </block>
+  <block wx:else>
+    <block wx:if="{{showAnimate}}">
+      <view class="loadAnimate fadeOut">
+        <image src="../../images/loading.png" class="bg-icon" style="margin:auto"></image>
+      </view>
+    </block>
+    <view class="container">
+      <!--<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;">-->
+      <view style="height:auto;  width:100%">
+        <swiper style="width:100%;height:360rpx" indicator-dots="true" autoplay="true">
+          <swiper-item wx:for="{{imgUrls}}" wx:key="index">
+            <image src="{{ImgUrl}}{{item.Url}}" class="slide-image" mode="widthFix" style="width:100%" bindload="imageLoad" />
+          </swiper-item>
+        </swiper>
+        <view class="back-fff goodsDetail" style="margin-top:4rpx;width:100% ">
+          <view style="padding:0 30rpx">
+            <view class="title">
+              {{GoodsModel.GoodsName}}
+            </view>
+            <view>
+              <image src="../../images/qqq.png" class="xs-icon"></image>
+              <text style="vertical-align: middle">已售{{GoodsModel.SellCount}}份</text>
+              <image src="../../images/qqq.png" class="xs-icon"></image>
+              <text style="vertical-align: middle">还剩{{GoodsModel.GoodCount-GoodsModel.SellCount
+                <=0?0:GoodsModel.GoodCount-GoodsModel.SellCount}}份</text>
+            </view>
+          </view>
+        </view>
+        <block wx:if="{{GoodsModel.ShopID > 0 }}">
+          <view class="shops">
+            <view style="padding:0 30rpx 20rpx">
+              <view class="shops-title">商家信息</view>
+              <view class="box-row shops-info">
+                <view class="flex-4">
+                  <image src="../../images/shop0.png" class="xs-icon"></image>
+                  <text> {{ShopsModel.Name}}</text>
+                </view>
+                <!-- <view class="flex-1 text-right">
+                  <image src="../../images/arrow2.png" class="xs-icon"></image>
+                </view> -->
+              </view>
+              <view class="box-row shops-info" catchtap="openMap">
+                <view class="flex-4">
+                  <image src="../../images/ding.png" class="xs-icon"></image>
+                  <text> {{ShopsModel.Address}}</text>
+                </view>
+                <view class="flex-1 text-right">
+                  <image src="../../images/arrow2.png" class="xs-icon"></image>
+                </view>
+              </view>
+              <view class="box-row shops-info" catchtap="phone">
+                <view class="flex-4">
+                  <image src="../../images/ph.png" class="xs-icon"></image>
+                  <text> {{ShopsModel.TelePhone}}</text>
+                </view>
+                <view class="flex-1 text-right">
+                  <image src="../../images/arrow2.png" class="xs-icon"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class="content">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+        <view class="message">
+          <view class="box-row" style="border-bottom: 1rpx solid #f0f0f0">
+            <view class="flex-1" style="padding: 0 30rpx;">
+              评价
+            </view>
+            <!--<view class="flex-1 text-right" style="padding: 0 30rpx;">
+            96%好评
+          </view>-->
+          </view>
+          <block wx:for="{{CommentList}}" wx:key="{{ID}}" wx:for-item="item" wx:for-index="parentId">
+            <view class="box-row words" style="position:relative">
+              <view class="zan" data-id="{{item.ID}}" data-index="{{parentId}}" catchtap="{{item.CommendID==''||item.CommendID==0?'AddCommend':'DeleteCommend'}}">
+                <block wx:if="{{item.CommendID==''||item.CommendID==0}}">
+                  <image src="../../images/zan01.png" style="width:45rpx;height:45rpx"></image>
+                </block>
+                <block wx:else>
+                  <image src="../../images/zan02.png" style="width:45rpx;height:45rpx"></image>
+                </block>
+                <block wx:if="{{item.CommendCount>0}}">
+                  <text class="active">{{item.CommendCount}}</text>
+                </block>
+              </view>
+              <view class="flex-1">
+                <image src="{{item.Headimgurl}}" class="bg-icon" style="border-radius: 50%"></image>
+              </view>
+              <view class="flex-4" style="overflow:auto">
+                <view class="comment">
+                  {{item.RealName}}
+                  <view class="creatTime">
+                    {{item.CreateTime}}
+                  </view>
+                </view>
+                <view class="pin">
+                  <text class="comment"> 打分</text>
+                  <image src="{{item.StarScore>0?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                  <image src="{{item.StarScore>1?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                  <image src="{{item.StarScore>2?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                  <image src="{{item.StarScore>3?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                  <image src="{{item.StarScore>4?'../../images/star2.png':'../../images/star1.png'}}" style="width:30rpx;height:30rpx"></image>
+                </view>
+                <text class="comment">{{item.Content}}</text>
+                <view style="width:100%;overflow:auto">
+                  <scroll-view scroll-left="{{scrollLeft}}" scroll-x="true" style="width:{{item.imgSize}}px;overflow:hidden;z-index:900;margin-bottom:20rpx;">
+                    <block wx:for="{{item.ImgList}}" wx:key="{{ID}}" wx:for-item="item">
+                      <image src="{{ImgUrl}}{{item.Url}}" data-id="{{parentId}}" data-src="{{ImgUrl}}{{item.Url}}" class="bg-icon" mode="aspectFill" style="margin-right:10rpx;height:50px;width:50px" catchtap="viewImg"></image>
+                    </block>
+                  </scroll-view>
+                </view>
+              </view>
+            </view>
+            <block wx:if="{{item.IsReturn=='True'}}">
+              <view class="box-row kefu">
+                <view class="flex-1">
+                </view>
+                <view class="flex-4" style="border-top:1rpx solid #f9f9f9">
+                  <view style="padding-left:20rpx; border-left:5rpx solid #f45e38; line-height:26rpx; margin:20rpx 0 20rpx;">客服回复：</view>
+                  <view style="padding:0 20rpx; background:#f0f0f0;border-radius: 8rpx; display:block">{{item.ReturnMessage}}</view>
+                  <view class="creatTime">
+                    {{item.ReturnDate}}
+                  </view>
+                </view>
+              </view>
+            </block>
+
+          </block>
+
+          <view class="box-row" style="border-bottom: 1rpx solid #f0f0f0;">
+            <view class="flex-1" style="padding: 0 30rpx;">
+              共{{GoodsModel.ComCount}}条评论
+            </view>
+          </view>
+        </view>
+        <block wx:if="{{hasMore}}">
+          <view class="loading-tip">拼命加载中…</view>
+        </block>
+        <block wx:else>
+          <view class="loading-tip">没有更多内容了</view>
+        </block>
+        <view class="space-50"></view>
+      </view>
+      <!--</scroll-view>-->
+      <view class="box-row" style="background:#fff;height:49px; align-items: center; border-top:1px solid #f0f0f0;position:fixed; left:0; bottom:0; width:100%;z-index:998">
+        <view class="flex-1">
+          <image src="../../images/new_icon_01.png" class="sm-icon" style="margin-left:30rpx;" catchtap="gohome"></image>
+        </view>
+        <view class="flex-2 text-right">
+          <text style=" color:#ff4041">￥</text>
+          <text style="margin-right:20rpx;font-size:60rpx; color:#ff4041">{{GoodsModel.Price}}</text>
+          <text style=" color:#ff4041;font-size:26rpx;margin-right:15rpx;">/{{GoodsModel.Unit}}</text>
+        </view>
+        <view class="flex-2">
+          <view class="buy" catchtap="goOrderUp">立即购买</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class="erro">
+    <image src="../../images/nodata.png" mode="widthFix" style="width:100%;margin:auto" catchtap="backpage"></image>
+  </view>
+</block>
+
+
+<import src="../../wxParse/wxParse.wxml" />

@@ -1,0 +1,154 @@
+<view class="container">
+  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;">
+    <block wx:if="{{hasMore}}">
+      <block wx:if="{{IsLoadMore}}">
+        <view class="back-fff">
+          <view class="padding-30">
+            <block wx:for="{{OrderList}}" wx:for-index="OrderIndex" wx:for-item="OrderItem" wx:key="ID">
+              <view class="box-row" style="margin-bottom:10rpx;" data-id="{{OrderItem.GoodsID}}" catchtap="GoGoods">
+                <view>
+                  <image mode="aspectFill" src="{{ImgUrl}}{{OrderItem.GoodsBigPicUrl}}" class="max-icon"></image>
+                </view>
+                <view class="flex-1">
+                  <view class="title"> {{OrderItem.GoodsName}}</view>
+                  <view class="intro">￥{{OrderItem.TotalSum}} × {{OrderItem.GoodsNumber}}</view>
+                </view>
+              </view>
+            </block>
+            <!--<view class="box-row" style="margin-bottom:30rpx;">
+              <view class="flex-3">
+                <view class="title">{{OrderDetailData.ArticleTitle}}</view>
+                <view class="price">￥{{OrderDetailData.PayMoney}} </view>
+              </view>
+              <view class="flex-1 text-right">
+                <block wx:if="{{OrderDetailData.IsPay&&!OrderDetailData.IsComment}}">
+                  <view class="cmt" catchtap="goConment">评价</view>
+                </block>
+              </view>
+            </view>-->
+            <!--<block wx:if="{{OrderDetailData.IsPay}}">
+              <view class="stat">
+                <view>
+                  <image src="../../images/sec.png" style="width:100rpx; height:100rpx;"></image>
+                </view>
+                <block wx:if="{{OrderDetailData.IsComment}}">
+                  <view>已评价</view>
+                  <view>评价时间：{{OrderDetailData.CommentDate}}</view>
+                </block>
+                <block wx:else>
+                  <view>付款时间：{{OrderDetailData.PayDate}}</view>
+                </block>
+              </view>
+            </block>
+            <block wx:else>
+              <form bindsubmit="GetJsApiParameters" report-submit="true">
+                <button class="pay" form-type="submit"> 付款 </button>
+              </form>
+            </block>-->
+          </view>
+        </view>
+        <view class="back-fff needPay">
+          <view class="box-row " style="padding:0 30rpx;">
+            <view class="flex-1">
+              <text>需付款：</text>
+            </view>
+            <view class="flex-1 text-right">
+              <text style="font-size:40rpx; color:red"> ￥{{OrderDetailData.PayMoney}}</text>
+            </view>
+          </view>
+        </view>
+        <!--<view class="back-fff" style="margin-top:20rpx; ">
+          <view style="padding:0 30rpx 20rpx">
+            <view class="info-title">食材</view>
+            <block wx:for="{{OrderList}}" wx:for-index="OrderIndex" wx:for-item="OrderItem" wx:key="ID">
+              <view class="box-row" style="align-items:center;margin-bottom:10rpx;" data-id="{{OrderItem.GoodsID}}" catchtap="GoGoods">
+                <view class="flex-1">
+                  <image mode="aspectFill" src="{{ImgUrl}}{{OrderItem.GoodsBigPicUrl}}" class="max-icon"></image>
+                </view>
+                <view class="flex-1">
+                  <view class="foods"> {{OrderItem.GoodsName}}</view>
+                </view>
+                <view class="flex-1">
+                  <view class="foods"> × {{OrderItem.GoodsNumber}}</view>
+                </view>
+                <view class="flex-1">
+                  <view class="foods"> ￥{{OrderItem.TotalSum}}</view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>-->
+        <view class="back-fff" style="margin-top:16rpx; ">
+          <view style="padding:0 30rpx 20rpx">
+            <view class="info-title">订单信息</view>
+            <view class="box-row add" catchtap="GoShop">
+              <view class="flex-4 detail-title">
+                <image src="../../images/order.png" class="xs-icon"></image>
+                <text>订单号：{{OrderDetailData.OrderNumber}}</text>
+              </view>
+              <view class="flex-1 detail-title " style="text-align:right">
+              </view>
+            </view>
+            <view class="box-row add">
+              <view class="flex-4  detail-title">
+                <image src="../../images/center1.png" class="xs-icon"></image>
+                <text>联系人：{{OrderDetailData.ConsigneeName}}</text>
+              </view>
+              <view class="flex-1 detail-title " style="text-align:right">
+              </view>
+            </view>
+            <view class="box-row add">
+              <view class="flex-4  detail-title">
+                <image src="../../images/ph.png" class="xs-icon"></image>
+                <text>手机号：{{OrderDetailData.LinkPhone}}</text>
+              </view>
+              <view class="flex-1 detail-title " style="text-align:right">
+              </view>
+            </view>
+            <view class="box-row add">
+              <view class="flex-4  detail-title">
+                <image src="../../images/address.png" class="xs-icon"></image>
+                <text>收货地址：{{OrderDetailData.Address}}</text>
+              </view>
+            </view>
+
+          </view>
+        </view>
+        <view class="back-fff" style="margin-top:16rpx; ">
+          <view style="padding:0 30rpx 20rpx">
+            <view class="info-title">备注</view>
+            <view class="box-row add">
+              <view class="flex-1 info ">
+                <block wx:if="{{OrderDetailData.OrderMessage}}">
+                  {{OrderDetailData.OrderMessage}}
+                </block>
+                <block wx:else>
+                  您未备注信息
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view hidden="{{IsLoadMore}}" class="loading-tip">拼命加载中…</view>
+    </block>
+    <block wx:else>
+      <view class="loading-tip">没有数据</view>
+    </block>
+  </scroll-view>
+  <view class="box-row" style="width:100%;border-top:1rpx solid #f0f0f0;background:#fff; height:40px;">
+    <view class="flex-2" catchtap="backpage" style="padding: 7px 15px; height:39px; box-sizing: border-box">
+      <image src="../../images/back.png" style="width:25px;height:25px;"></image>
+    </view>
+    <view class="flex-1">
+      <!--<block wx:if="{{OrderDetailData.IsPay&&!OrderDetailData.IsComment}}">
+        <view class="pay" catchtap="goConment">评价</view>
+      </block>-->
+      <block wx:if="{{!OrderDetailData.IsPay}}">
+        <form bindsubmit="GetJsApiParameters" report-submit="true">
+          <button class="pay" form-type="submit" loading="{{!ButtonControll}}" disabled="{{!ButtonControll}}"> 付款 </button>
+        </form>
+      </block>
+    </view>
+  </view>
+</view>

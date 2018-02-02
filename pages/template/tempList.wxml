@@ -1,0 +1,48 @@
+<template name="tempList1">
+  <view class="messages" wx:for="{{projects}}" wx:key="{{index}}" >
+    <view class="message-content" data-id="{{item.ArticleID}}" catchtap="viewProjectDetail">
+      <view class="box-row">
+        <view>
+         <block wx:if="{{type!=='signup'}}">
+           <image src="{{ImgUrl}}{{item.PicPath}}" mode="aspectFill" class="max-icon" style="margin-right:30rpx;"></image>
+          </block>         
+        </view>
+        <view class="flex-1">
+          <block wx:if="{{type=='comment'}}">
+            <view class="tit">
+              {{item.Content}}
+            </view>
+          </block>
+          <view class="tit">{{item.Abstract}}</view>
+          <block wx:if="{{type=='collection'||type=='comment'||type=='visit'}}">
+            <view class="src">来自文章{{item.Title}}</view>
+          </block>
+          <block wx:if="{{type=='signup'}}">
+            <view class="sign">姓名:{{item.ConsigneeName}}</view>
+            <view class="sign">电话:{{item.LinkPhone}}</view>
+            <view class="sign">报名时间:{{item.AddDate}}</view>
+          </block>
+          <block wx:if="{{type=='collection'}}">
+            <view class="time">
+              收藏时间：{{item.CreateTime}}
+            </view>
+          </block>
+          <block wx:if="{{type=='comment'}}">
+            <view class="time">
+              发表时间：{{item.CreateTime}}
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{type=='collection'}}">
+      <view class="del" data-id="{{index}}" catchtap="delItem">删除</view>
+    </block>
+  </view>
+  <block wx:if="{{hasMore}}">
+    <view class="loading-tip">拼命加载中…</view>
+  </block>
+  <block wx:else>
+    <view class="loading-tip">没有更多内容了</view>
+  </block>
+</template>

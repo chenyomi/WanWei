@@ -1,0 +1,30 @@
+/* pages/goods/detail.wxss */
+@import "../../wxParse/wxParse.wxss";
+
+.padding-30{padding: 30rpx}
+.back-fff{background: #fff;}
+.goodsDetail{font-size: 28rpx; line-height: 70rpx;color: #666 }
+.goodsDetail .title{font-weight: bold; font-size: 30rpx; border-bottom: 1rpx solid #f0f0f0; line-height: 80rpx; color: #333}
+
+.message {font-size: 28rpx; line-height: 80rpx; color: #555; background: #fff; margin-top: 20rpx}
+.message .words{padding: 0 30rpx; align-items:flex-start;padding-top: 30rpx; }
+.message .words text{line-height: 50rpx; display: inline-block}
+.message .words .pin{ line-height: 50rpx;}
+.message .words .pin image{vertical-align: middle}
+.message .words .pin text{margin-right: 20rpx}
+.message .words .comment{line-height: 40rpx;}
+.details .message .creatTime {text-align: left; line-height: 22rpx; color: #878787;font-size: 22rpx;padding-bottom: 30rpx;padding-top: 24rpx; border-bottom: 1rpx solid #f0f0f0}
+.kefu {line-height:50rpx;font-size:24rpx;color:#878787; padding: 14rpx 30rpx;box-sizing: border-box;  }
+.zan {position:absolute;right: 20rpx; top: 0rpx}
+.zan image {vertical-align: middle;}
+.zan text {vertical-align: middle;padding-left: 10rpx; color: #bfbfbf}
+.zan text.active {vertical-align: middle; color: #f45e38}
+
+.content{ background: #fff; margin-top: 20rpx; padding: 30rpx; }
+.buy{text-align: center; height: 49px; background: #333;color: #fff; line-height: 49px; font-size: 30rpx;}
+.loading-tip { width: 100%; height: 80rpx;line-height: 80rpx; text-align: center;color: #878787; font-size: 12px;}
+
+ .shops{margin-top:16rpx; border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7; background:#fff;}
+ .shops .shops-title{font-size: 28rpx;padding: 25rpx 0;border-bottom: 1px solid #e7e7e7;color: #666}
+ .shops .shops-info{font-size: 28rpx;color: #666;border-bottom: 1px solid #e7e7e7;padding: 20rpx 0;}
+ .shops .shops-info:last-child{border-bottom: none;}

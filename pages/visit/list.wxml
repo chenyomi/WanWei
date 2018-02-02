@@ -1,0 +1,33 @@
+<view class="container" style="background:#fff;">
+  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px; overflow:hidden" class="list" bindscrolltolower="bindDownLoad">
+    <view class="messages" wx:for="{{list}}" wx:key="{{index}}">
+      <view class="message-content" data-id="{{item.ArticleID}}" catchtap="{{item.IsEnable == 'True'&& item.IsClosed == 'False' && item.IsDelete == 'False' ?'viewProjectDetail':''}}">
+        <view class="box-row">
+          <view>
+            <image src="{{ImgUrl}}{{item.PicPath}}" mode="aspectFill" class="max-icon" style="margin-right:30rpx;"></image>
+          </view>
+          <view class="flex-1">
+            <view class="tit">{{item.Abstract}}</view>
+            <view class="src">{{item.Title}}</view>
+             <block wx:if="{{item.IsEnable == 'False' || item.IsClosed == 'True' || item.IsDelete == 'True'}}"><view  class="isDel">失效</view></block>
+            <view class="sign">阅读时间:{{item.CreateTime}}</view>  
+          </view>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{hasMore}}">
+      <view class="loading-tip">拼命加载中…</view>
+    </block>
+    <block wx:else>
+      <view class="loading-tip">没有更多内容了</view>
+    </block>
+  </scroll-view>
+  <view class="box-row" style="width:100%;border-top:1rpx solid #f0f0f0;">
+    <view class="flex-1" catchtap="backpage" style="padding: 7px 15px; height:39px; box-sizing: border-box">
+      <image src="../../images/back.png" style="width:25px;height:25px;"></image>
+    </view>
+    <view class="flex-1">
+    </view>
+  </view>
+</view>
+<import src="../../pages/template/tempList.wxml" />

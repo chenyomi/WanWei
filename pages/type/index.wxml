@@ -1,0 +1,12 @@
+<view class="container">
+ <view style="width:100%">
+  <block wx:for="{{TypeList}}" wx:for-index="TypeListIndex" wx:for-item="TypeListItem" wx:key="ID">
+    <view class="typeItem" data-id="{{TypeListItem.ID}}" data-name="{{TypeListItem.Name}}" catchtap="goList">
+      <image src="{{ImgUrl}}{{TypeListItem.ImgName}}" mode="aspectFill" ></image>
+      <view class="pos">
+        {{TypeListItem.Name}}
+      </view>
+    </view>
+  </block>
+ </view>
+</view>

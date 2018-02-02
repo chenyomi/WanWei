@@ -1,0 +1,65 @@
+<view class="container" style="background:#fff;">
+  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px; overflow:hidden" class="list" bindscrolltolower="bindDownLoad">
+    <view class="messages" wx:for="{{list}}" wx:for-index="parentId" wx:key="{{index}}">
+      <view class="message-content" data-id="{{item.ArticleID}}" catchtap="{{item.IsEnable == 'True'&& item.IsDelete == 'False' && item.IsClosed == 'False' ?'viewProjectDetail':''}}">
+        <view class="box-row">
+          <view>
+            <image src="{{ImgUrl}}{{item.PicPath}}" mode="aspectFill" class="max-icon" style="margin-right:30rpx;border-radius:15rpx;"></image>
+          </view>
+          <view class="flex-1" style="overflow:auto">
+            <view class="time">
+              发表时间：{{item.CreateTime}}
+            </view>
+            <block wx:if="{{item.IsEnable == 'False' || item.IsDelete == 'True' || item.IsClosed == 'True'}}">
+              <view class="isDel">失效</view>
+            </block>
+            <view class="tit">
+              {{item.Content}}
+            </view>
+            <view class="src" style="margin-bottom:10rpx;">来自
+              <text>{{item.Title}}</text>
+            </view>
+            <!--<view class="tit" style="margin-bottom:10rpx;">{{item.Abstract}}</view>-->
+
+            <view style="wdith:100%;overflow:auto">
+              <scroll-view scroll-left="{{scrollLeft}}" scroll-x="true" style="width:{{item.imgSize}}px;overflow:hidden;z-index:900;margin-bottom:20rpx;">
+                <block wx:for="{{item.ImgList}}" wx:key="{{ID}}" wx:for-item="item">
+                  <image src="{{ImgUrl}}{{item.Url}}" data-id="{{parentId}}" data-src="{{ImgUrl}}{{item.Url}}" class="bg-icon" mode="aspectFill" style="margin-right:10rpx;margin-bottom:10rpx;height:50px;width:50px" catchtap="viewImg"></image>
+                </block>
+              </scroll-view>
+            </view>
+            <block wx:if="{{item.IsReturn=='True'}}">
+              <view class="box-row kefu">
+                <view class="flex-1" style="border-top:1rpx solid #f9f9f9">
+                  <view style="padding-left:20rpx; border-left:5rpx solid #f45e38; line-height:26rpx; margin:20rpx 0 20rpx;">客服回复：</view>
+                  <view style="padding:0 20rpx; background:#f0f0f0;border-radius: 8rpx; display:block">{{item.ReturnMessage}}</view>
+                  <view class="creatTime">
+                    {{item.ReturnDate}}
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+
+      </view>
+
+      <block wx:if="{{type=='collection'}}">
+        <view class="del" data-id="{{index}}" catchtap="delItem">删除</view>
+      </block>
+    </view>
+    <block wx:if="{{hasMore}}">
+      <view class="loading-tip">拼命加载中…</view>
+    </block>
+    <block wx:else>
+      <view class="loading-tip">没有更多内容了</view>
+    </block>
+  </scroll-view>
+  <view class="box-row" style="width:100%;border-top:1rpx solid #f0f0f0;">
+    <view class="flex-1" catchtap="backpage" style="padding: 7px 15px; height:39px; box-sizing: border-box">
+      <image src="../../images/back.png" style="width:25px;height:25px;"></image>
+    </view>
+    <view class="flex-1">
+    </view>
+  </view>
+</view>

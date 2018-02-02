@@ -1,0 +1,59 @@
+<template name="projectlist">
+    <block wx:for="{{projects}}" wx:for-index="projectIndex" wx:for-item="projectItem" wx:key="project">
+        <view class="news fadeIn" data-id="{{projectItem.ID}}" catchtap="viewProjectDetail">
+          <block wx:if="{{projectItem.AdType != 2}}">
+            <view class="tips" style="background:#ff8400;">
+              玩味
+            </view>
+          </block>
+          <block wx:elif="{{projectItem.AdType == 2}}">
+            <view class="tips" style="background:#fc6a6c;">
+              吃协
+            </view>
+          </block>
+           <view style="width:100%;height:360rpx;overflow:hidden">
+            <image src="{{ImgUrl}}{{projectItem.PicPath}}" mode="widthFix" style="width:100%"></image>
+           </view>
+            <view class="new">
+                <view class="title">{{projectItem.Title}}</view>
+                <view class="intro">{{projectItem.Abstract}}</view>
+                <view class="tip box-row" style="align-items:flex-end">
+                  <!--文章-->
+                    <block wx:if="{{projectItem.AdType == 1}}">                      
+                        <text style="color:#ff6600; text-align:left;display:inline-block;width:240rpx;"></text>
+                    </block>
+                       <!--活动-->
+                    <block wx:elif="{{projectItem.AdType == 2}}"> 
+                       <!--已开团-->                    
+                                            
+                            <block wx:if="{{projectItem.lessTime>0}}">
+                                <text style="color:#ff6600;; text-align:left;display:inline-block;width:240rpx;">报名中</text>
+                            </block>
+                            <block wx:else>
+                                <text style="color:#ff6600; text-align:left;display:inline-block;width:240rpx;">报名已结束</text>
+                            </block>
+                      
+                    </block>
+                       <!--食材-->
+                    <block wx:elif="{{projectItem.AdType == 3}}">                     
+                        <text style="color:#ff6600; text-align:left;display:inline-block;width:240rpx;"></text>
+                    </block>
+                    <image src="../../images/collection.png" class="xs-icon"></image>
+                    <text>收藏 {{projectItem.ColCount}}</text>
+                    <image src="../../images/lookat.png" class="xs-icon"></image>
+                    <text>阅读 {{projectItem.VisitCount}}</text>
+                    <image src="../../images/message.png" class="xs-icon"></image>
+                    <text>留言 {{projectItem.ComCount}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{showTipLoading}}">
+        <block wx:if="{{hasMore}}">
+            <view class="loading-tip">拼命加载中…</view>
+        </block>
+        <block wx:else>
+            <view class="loading-tip">没有更多内容了</view>
+        </block>
+    </block>
+</template>

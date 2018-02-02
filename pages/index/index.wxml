@@ -1,0 +1,80 @@
+<view class="container" style="background:url(http://mini.uess.me/玩味小程序/images/indexbg.jpg) top center no-repeat; background-size:cover">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width:100%;min-height:600rpx;position:absolute; left:0; bottom:100rpx" bindchange="changeSwiper">
+    <swiper-item wx:for="{{projects}}" wx:for-index="index" class="wiper-item" wx:for-item="projectItem" wx:key="project" catchtap="viewProjectDetail" data-id="{{projectItem.ID}}">
+      <view class="item text-center">
+        <image mode="aspectFill" src="{{ImgUrl}}{{projectItem.PicPath}}" class="item-pic"></image>
+        <view class="title">{{projectItem.Title}}</view>
+        <view class="intro">{{projectItem.Abstract}}</view>
+        <block wx:if="{{projectItem.AdType == 2}}">
+          <block wx:if="{{projectItem.IsOpenGroup == 'False'}}">
+            <view style="padding:0 20rpx">
+              <view class="progress">
+                <progress percent="{{projectItem.BookingProgress}}" stroke-width="8" color="#ff7519" />
+                <view style="position:absolute; top:-58rpx;left:{{projectItem.BookingProgress}}%; font-size:26rpx; width:70rpx; background:url(http://mini.uess.me/玩味小程序/images/paopao.png) center center no-repeat;height:55rpx;line-height:48rpx;background-size:100%; color:#fff;margin-left:-20rpx">{{projectItem.HasBookingCount}}人</view>
+              </view>
+              <view class="box-row time">
+                <view class="flex-1 text-left">
+                  满{{projectItem.BookingCount}}人开团
+                </view>
+                <view class="flex-1 text-right">
+                  <block wx:if="{{projectItem.Surplus == 0}}">
+                    等待开团
+                  </block>
+                  <block wx:else>
+                    还差{{projectItem.Surplus}}人就开团
+                  </block>
+                </view>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="box-row time">
+              <view class="flex-1" style="color:#ff6600">
+                <view>已报名</view>
+                <view>{{projectItem.HasSignUpCount}}人</view>
+              </view>
+              <view class="flex-1" style="color:#ff6600">
+                <view>剩余名额</view>
+                <view>{{projectItem.SignUpLess}}人</view>
+              </view>
+              <view class="flex-1 text-right">
+                <view>距离结束仅剩</view>
+                <block wx:if="{{projectItem.lessTime>0}}">
+                  <view>
+                    <text>{{projectItem.day}}</text>
+                    <text>天</text>
+                    <text>{{projectItem.hr}}</text>
+                    <text>时</text>
+                  </view>
+                </block>
+                <block wx:else>
+                  <view>
+                    <text>报名已结束</text>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:else>
+          <view class="tip">
+            <block wx:if="{{IsVisit}}">
+              <text>阅读时间 {{projectItem.CreateTime}}</text>
+            </block>
+            <block wx:else="">
+              <image src="../../images/collection.png" class="xs-icon"></image>
+              <text>收藏 {{projectItem.ColCount}}</text>
+              <image src="../../images/lookat.png" class="xs-icon"></image>
+              <text>阅读 {{projectItem.VisitCount}}</text>
+              <image src="../../images/message.png" class="xs-icon"></image>
+              <text>留言 {{projectItem.ComCount}}</text>
+            </block>
+          </view>
+        </block>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <image src="../../images/{{dotDirection == 0||dotDirection == 3?'dots01.jpg':'dots02.jpg'}}" style="height:100rpx; width:42rpx; position:absolute; left:50%; bottom:1px; margin-left:-42rpx"></image>
+  <image src="../../images/{{dotDirection == 1||dotDirection == 3?'dots03.jpg':'dots04.jpg'}}" style="height:100rpx; width:42rpx; position:absolute; left:50%; bottom:1px;"></image>
+</view>

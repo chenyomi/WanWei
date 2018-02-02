@@ -1,0 +1,51 @@
+/* pages/comment/comment.wxss */
+
+.padding{
+    padding: 40rpx;
+    background: #fff;
+}
+
+.padding image{vertical-align: middle; margin-right: 10rpx;}
+
+.center{ text-align: center}
+.title{
+    line-height: 60rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    margin-bottom: 40rpx;
+}
+.button{
+ background:#f76120;
+color:#fff;
+text-align:center;
+line-height:66rpx;
+border-radius:8rpx;
+font-size:28rpx;
+width:90%;
+margin:0 auto 20rpx auto;
+margin-top: 30rpx;
+}
+
+textarea{
+    font-size: 28rpx;
+    border: 1px solid #e8e8e8;
+    border-radius: 10rpx;
+    width: 100%;
+    line-height: 40rpx;
+    box-sizing: border-box;
+    padding: 10rpx
+}
+  .fixed{
+      padding: 0 30rpx;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,.9);
+      height:40px; vertical-align: middle;
+  }
+.addpic{padding: 20rpx 40rpx; background: #fff; margin-top: 16rpx;}
+.addpic text{vertical-align: middle; font-size: 26rpx; color: #878787;margin-left: 16rpx}
+.addpic image{margin: 10rpx;}
+
+.imgBox{position: relative; display: inline-block}

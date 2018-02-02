@@ -1,0 +1,11 @@
+/* pages/index/index.wxss */
+.wiper-item{padding:60rpx 60rpx 0;box-sizing: border-box;margin-bottom:60rpx; z-index: 999}
+.wiper-item .item{background:#fff;width:100%; border-radius: 8rpx; padding:0 50rpx 30rpx; box-sizing: border-box; }
+.wiper-item .item .title{font-size: 32rpx;text-align: center;margin-top: 25rpx}
+.wiper-item .item .intro{font-size: 26rpx;text-align: center; color:#a7a7a7; margin-top: 25rpx; display:block; height:80rpx; line-height: 40rpx; overflow: hidden}
+.wiper-item .item .item-pic{width:400rpx; height:180rpx;margin-top:-60rpx; box-shadow: 0 0 8px #666; border-radius: 5rpx;}
+.wiper-item .item .progress{margin-top: 70rpx; position: relative; }
+.wiper-item .item .time{font-size: 26rpx; color: #878787; line-height: 60rpx;}
+.wiper-item .item .tip{padding: 30rpx 0 10rpx;text-align: right; }
+.wiper-item .item .tip image{vertical-align: middle; margin-left: 50rpx}
+.wiper-item .item .tip text{font-size: 26rpx; color: #b2b2b2;}

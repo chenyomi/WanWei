@@ -1,0 +1,23 @@
+/* pages/orderList/orderList.wxss */
+
+.padding-30{
+    padding: 0 30rpx;
+}
+.button-float{background:#000;color:#fff;text-align:center;line-height:39px;font-size:28rpx;width:100%;border-radius:0;}
+.title{font-size: 28rpx;color:#707070;line-height: 80rpx}
+
+.back_fff{background: #fff;}
+
+.add{display: inline-block;height: 60rpx;width: 60rpx;border: 1px solid #e7e7e7;line-height: 50rpx;text-align: center;font-size: 40rpx;color:#e7e7e7;
+vertical-align: middle}
+.del{display: inline-block;height: 60rpx;width: 60rpx;border: 1px solid #e7e7e7;line-height: 50rpx;text-align: center;font-size: 40rpx;color:#e7e7e7;
+vertical-align: middle}
+.fixed{position: fixed;bottom: 0;left: 0;width: 100%;background: rgba(255,255,255,.9);vertical-align: middle;border-top: 1px solid #f0f0f0}
+
+
+.input{display: inline-block;height: 56rpx;width: 70rpx;border: 1px solid #e7e7e7;line-height: 50rpx;text-align: center;font-size: 30rpx;color:#a0a0a0;vertical-align: middle;margin:0 10rpx}
+
+.active{border-color: #f76120;color: #f76120;}
+.tip{position: fixed; width: 100%; left: 0; bottom: 40px;line-height: 40rpx;padding: 10rpx 30rpx; background: #ffe0c5; color:#666; font-size: 26rpx;} 
+.button{margin-top: 30rpx;background: #f45e38;color: #fff;line-height: 70rpx;border-radius: 10rpx;text-align: center;font-size: 28rpx}
+ 

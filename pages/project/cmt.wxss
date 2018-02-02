@@ -1,0 +1,24 @@
+
+.details .title{line-height: 50rpx; text-align: center}
+.details .intro{color: #b2b2b2; font-size: 26rpx; text-align: center; margin-bottom:10px;}
+.details .intro text{ margin-left: 20rpx;border: 1px solid #ff7519; color: #ff7519; display: inline-block;line-height: 40rpx; padding: 0 20rpx; border-radius: 25rpx;}
+.details .detail{ padding: 20rpx 60rpx 10rpx; background: #fff }
+.details .detail .tip{padding: 0rpx 0 30rpx;text-align: center; }
+.details .detail .tip image{vertical-align: middle;}
+.details .detail .tip text{font-size: 26rpx; color: #b2b2b2; margin-right: 20rpx}
+.details .content {font-size: 28rpx; line-height: 50rpx; color: #878787; padding: 30rpx 30rpx 40rpx; background: #fff; margin-top: 16rpx;}
+.details .message {font-size: 28rpx; line-height: 80rpx; color: #555;z-index:900;position:relative;background: #fff
+}
+.details .message .words{padding: 0 30rpx; align-items:flex-start;padding-top: 30rpx; position: relative}
+.details .message .words text{line-height: 50rpx; display: inline-block}
+.details .message .words .pin{ line-height: 50rpx;}
+.details .message .words .pin image{vertical-align: middle}
+.details .message .words .pin text{margin-right: 20rpx}
+.details .message .words .comment{line-height: 40rpx;}
+.details .message .creatTime {text-align: left; line-height: 22rpx; color: #878787;font-size: 22rpx;padding-bottom: 30rpx;padding-top: 24rpx; border-bottom: 1rpx solid #f0f0f0}
+
+.kefu {line-height:50rpx;font-size:24rpx;color:#878787; padding: 14rpx 30rpx;box-sizing: border-box;  }
+.zan {position:absolute;right: 20rpx; top: 0rpx}
+.zan image {vertical-align: middle;}
+.zan text {vertical-align: middle;padding-left: 10rpx; color: #bfbfbf}
+.zan text.active {vertical-align: middle; color: #f45e38}

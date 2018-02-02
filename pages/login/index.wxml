@@ -1,0 +1,23 @@
+ <view  hidden="{{isShowIntro}}" class="login-container">
+  <view class="logged">
+    <image class="logged-icon" src="../../images/iconfont-weixin.png" />
+    <view class="logged-text">近期你已经授权登陆过玩味吃协小程序</view>
+    <block wx:if="{{jumpPage}}">
+      <view class="logged-text">{{messageText}}</view>
+    </block>
+    <block wx:if="{{!jumpPage}}">
+      <view class="morePro" catchtap="btnReturnUrl">跳转</view>
+    </block>
+  </view>
+</view> 
+
+<view hidden="{{!isShowIntro}}" style="height:100%; width:100%; position:relative">
+  <image src="../../images/index_bg.jpg" style="width:100%;height:100%; position:absolute;left:0; top:0;z-index:1"></image>
+  <view style="width:100%; position:absolute;left:0; top:20rpx; text-align:center; z-index:2">
+  <image src="../../images/index_text.png" mode="widthFix" style="width:65%" ></image>
+  </view>
+    <image src="../../images/person.png" mode="widthFix" style="width:100%; position:absolute;left:0; bottom:0; z-index:2" ></image>
+    <view catchtap="jumpEvent" style="position:absolute;right:20rpx; top:20rpx;background:rgba(33,33,33,.7);color:#fff;font-size:24rpx; height:60rpx;width:60rpx;z-index:2;border-radius: 50%;text-align:center;line-height:60rpx;">
+      {{junmpText}}
+    </view>
+</view>

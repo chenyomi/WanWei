@@ -1,0 +1,17 @@
+
+
+.news{background: #fff; position: relative;}
+.news:nth-last-child(2) .new{border-bottom: none}
+.news .new{ padding: 20rpx 30rpx 20rpx; border-bottom: 14rpx solid #f0f0f0; position: relative}
+.news .title{ font-size: 31rpx;margin-bottom: 10rpx; }
+.news .intro{color: #b2b2b2; font-size: 26rpx; }
+.news .new .tip{padding: 10rpx 0 10rpx;text-align: right; }
+.news .new .tip image{vertical-align: middle; }
+.news .new .tip text{font-size: 26rpx; color: #b2b2b2;}
+.news .new .progress{margin-top: 100rpx; position: relative}
+.news .new .time{font-size: 26rpx; color: #878787; line-height: 60rpx;}
+.tips{color: #fff!important;  padding: 0 20rpx;  line-height: 40rpx; font-size: 26rpx;float: left; position: absolute; right: 10rpx; top: 10rpx;}
+
+.Group{ font-size: 28rpx; text-align: center; width: 100%;}
+.Group text{padding: 0 20rpx; color: #545454;line-height: 45rpx; display: inline-block; margin: 20rpx 12rpx;}
+.Group text.active{color: #ff6600; border: 1rpx solid #ff6600; border-radius: 5rpx}

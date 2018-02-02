@@ -1,0 +1,11 @@
+
+.messages {padding: 60rpx 30rpx 40rpx;border-top: 2rpx solid #f0f0f0;}
+.messages .message-content {padding: 30rpx;border: 2rpx solid #f0f0f0;width: 100%; box-sizing: border-box;position: relative;}
+.messages .message-content .tit{line-height: 40rpx; font-size: 26rpx; color:cornflowerblue}
+.messages .message-content .time{line-height: 40rpx; font-size: 26rpx; color: #666}
+.messages .message-content .src{line-height: 40rpx; font-size: 26rpx; color: #666}
+.messages .message-content .src text{line-height: 40rpx; font-size: 26rpx; color: cornflowerblue; padding: 0 20rpx}
+.messages .message-content .sign{line-height: 50rpx; font-size: 26rpx; color: #666}
+.messages .del{line-height: 30rpx; font-size: 26rpx; color: #666;margin-top: 60rpx}
+.messages:first-child {border: none}
+.messages .message-content .isDel{ padding: 0 10rpx;font-size: 26rpx; line-height: 40rpx; background: darkgray; color: #fff;display: inline-block; border-radius: 4rpx}

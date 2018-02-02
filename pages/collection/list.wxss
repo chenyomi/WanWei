@@ -1,0 +1,2 @@
+/* pages/collection/index.wxss */
+@import "../../pages/template/tempList.wxss";

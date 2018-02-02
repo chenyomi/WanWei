@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/index/index",
+    "pages/type/index",
+    "pages/type/list",
+    "pages/search/index",
+    "pages/shops/detail",
+    "pages/project/list",
+    "pages/project/detail",
+    "pages/project/cmt",
+    "pages/goods/detail",
+    "pages/comment/list",
+    "pages/collection/list",
+    "pages/comment/comment",
+    "pages/signup/index",
+    "pages/signup/list",
+    "pages/bespeak/index",
+    "pages/bespeak/list",
+    "pages/visit/list",
+    "pages/order/submitOrder",
+    "pages/order/list",
+    "pages/order/detail",
+    "pages/user/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "玩味吃协",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "color": "#dbdbdb",
+    "selectedColor": "#ff6904",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/project/list",
+        "iconPath": "images/home1.png",
+        "selectedIconPath": "images/home2.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/type/index",
+        "iconPath": "images/fenlei1.png",
+        "selectedIconPath": "images/fenlei2.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "images/center1.png",
+        "selectedIconPath": "images/center2.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

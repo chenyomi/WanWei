@@ -1,0 +1,56 @@
+<!--pages/comment/comment.wxml-->
+
+<view class="padding">
+
+  <view class="box-row center">
+    <view class="flex-1">
+      <image data-star="1" src="{{Star>0?'../../images/star-select.png':'../../images/star-unselect.png'}}" style="width:70rpx;height:70rpx" bindtap="star"></image>
+    </view>
+    <view class="flex-1">
+      <image data-star="2" src="{{Star>1?'../../images/star-select.png':'../../images/star-unselect.png'}}" style="width:70rpx;height:70rpx" bindtap="star"></image>
+    </view>
+    <view class="flex-1">
+      <image data-star="3" src="{{Star>2?'../../images/star-select.png':'../../images/star-unselect.png'}}" style="width:70rpx;height:70rpx" bindtap="star"></image>
+    </view>
+    <view class="flex-1">
+      <image data-star="4" src="{{Star>3?'../../images/star-select.png':'../../images/star-unselect.png'}}" style="width:70rpx;height:70rpx" bindtap="star"></image>
+    </view>
+    <view class="flex-1">
+      <image data-star="5" src="{{Star>4?'../../images/star-select.png':'../../images/star-unselect.png'}}" style="width:70rpx;height:70rpx" bindtap="star"></image>
+    </view>
+  </view>
+</view>
+
+<form bindsubmit="bindFormSubmit">
+  <view class="addpic" >
+    <block wx:for="{{FileList}}" wx:key="{{Name}}" wx:for-item="item">
+     <view class="imgBox">
+      <image mode="aspectFill" src="{{ImgUrl}}{{item.Url}}" catchtap="wxParseImgTap" class="bg-icon"  ></image>
+       <image mode="widthFix" src="../../images/delimg.png" data-id= "{{index}}" catchtap="delImg" style="height:40rpx; width:40rpx;position: absolute; right:-15rpx; top:-15rpx;" ></image>
+      </view>
+    </block>
+     <view class="imgBox">
+    <image mode="aspectFill" src="../../images/uppic.png" catchtap="chooseImg" class="bg-icon"></image>
+     </view>
+  </view>
+  <view class="padding" style="margin-top:16rpx;">
+
+    <view class="section">
+      <textarea placeholder="请输入评价" name="textarea" />
+    </view>
+  </view>
+  <button class="button" form-type="submit" loading="{{!ButtonControll}}" disabled="{{!ButtonControll}}"> 提交 </button>
+</form>
+<view class="fixed">
+  <view class="box-row" style="align-items: center">
+    <view class="flex-1" catchtap="backpage">
+      <image src="../../images/back.png" class="sm-icon" style="margin-top:5px;"></image>
+    </view>
+    <view class="flex-1 center">
+
+      <!--<image  src="../../images/like.png" style="width:60rpx;height:60rpx;" ></image>
+            <text>900</text>-->
+    </view>
+  </view>
+</view>
+<view style="height:50px;width:100%"></view>

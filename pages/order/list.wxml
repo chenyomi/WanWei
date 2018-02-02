@@ -1,0 +1,73 @@
+<view class="container">
+  <view class="tab">
+    <view class="box-row">
+      <view class="flex-1 {{isActive==2?'active':false}}" catchtap="tabTo2">
+        全部订单
+      </view>
+      <view class="flex-1 {{isActive==0?'active':false}}" catchtap="tabTo0">
+        未支付
+      </view>
+      <view class="flex-1 {{isActive==1?'active':false}}" catchtap="tabTo1">
+        已支付
+      </view>
+    </view>
+  </view>
+  <view class="list-scroll">
+    <view class="space-40" style="height:36px"></view>
+    <block wx:for="{{OrderList}}" wx:for-index="OrderIndex" wx:for-item="OrderItem" wx:key="ID">
+      <view class="orderList fadeIn" data-id="{{OrderItem.ID}}" bindtap="goOrder">
+        <view class="orderList-item">
+          <view class="box-row">
+            <view style="padding:0 20rpx;">
+              <image mode="aspectFill" src="{{ImgUrl}}{{OrderItem.ArticlePicPath}}" class="max-icon"></image>
+            </view>
+            <view class="flex-1">
+              <text class="title">{{OrderItem.ArticleTitle}}</text>
+              <block wx:if="{{OrderItem.IsPay =='True'}}">
+                <view class="tag pay ">
+                  已支付
+                </view>
+                <!--<view wx:if="{{OrderItem.IsComment}}" class="tag cmt">已评价</view>
+                <view wx:else class="tag uncmt" data-id="{{OrderItem.ID}}" catchtap="goConment">去评价</view>-->
+              </block>
+
+              <block wx:else>
+                <view class="tag unpay">
+                  未支付
+                </view>
+              </block>
+              <view class="intro">订单编号：{{OrderItem.OrderNumber}}</view>
+
+              <view class="price">总价： <text style="color:red">￥{{OrderItem.PayMoney}}</text></view>
+              
+              <block wx:if="{{OrderItem.IsPay =='True'}}">
+                <view class="price">支付时间：{{OrderItem.PayDate}}</view>
+              </block>
+              <block wx:else>
+                <view class="price">下单时间：{{OrderItem.AddDate}}</view>
+              </block>
+            </view>
+
+          </view>
+
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{hasMore}}">
+      <view class="loading-tip">拼命加载中…</view>
+    </block>
+    <block wx:else>
+      <view class="loading-tip">没有更多内容了</view>
+    </block>
+    <view class="space-40"></view>
+  </view>
+
+  <view class="box-row" style="width:100%;border-top:1rpx solid #f0f0f0; background:#fff;;z-index: 999;position: fixed; bottom: 0; left: 0">
+    <view class="flex-1" catchtap="backpage" style="padding: 7px 15px; height:39px; box-sizing: border-box">
+      <image src="../../images/back.png" style="width:25px;height:25px;"></image>
+    </view>
+    <view class="flex-1">
+    </view>
+  </view>
+
+</view>

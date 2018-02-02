@@ -1,0 +1,40 @@
+<view class="container">
+  <!-- <view class="search"  catchtap="goSearch">
+<view class="input">搜索</view>
+<image src="../../images/search.png" class="xs-icon" ></image>
+</view> -->
+  <view class="list-scroll">
+    <block wx:if="{{projectsHot.length>0}}">
+      <swiper indicator-color="rgba(162,162, 162, 1)" indicator-active-color="rgba(255,255,255,1)" indicator-dots="true" autoplay="true" style="height:360rpx;">
+        <block wx:for="{{projectsHot}}" wx:for-index="projectIndex" wx:for-item="projectItem" wx:key="project">
+          <swiper-item>
+            <image src="{{ImgUrl}}{{projectItem.PicPath}}" class="slide-image" mode="widthFix" style="width:100%" data-id="{{projectItem.ID}}" catchtap="viewProjectDetail" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view style=" height:30rpx;"></view>
+      <view class="box-row text-center type-link" style="padding:30rpx">
+        <view style="width:140rpx;position:relative" data-id="-1" catchtap="goList">
+          <image src="../../images/quanbu.jpg" class="max-icon"></image>
+          <text>全部</text>
+        </view>
+        <view style="width:140rpx;position:relative" data-id="1" catchtap="goList">
+          <image src="../../images/wenzhang.jpg" class="max-icon"></image>
+           <text>玩味</text>
+        </view>
+       <view style="width:140rpx;position:relative"data-id="2" catchtap="goList">
+         <image src="../../images/huodong.jpg" class="max-icon"></image>
+          <text>吃协</text>
+        </view>
+        <view style="width:140rpx;position:relative"data-id="3" catchtap="goList">
+         <image src="../../images/shicai.jpg" class="max-icon"></image>
+          <text>食材</text>
+        </view>
+      </view>
+      <view style=" height:30rpx;"></view>
+    </block>
+
+    <template is="projectlist" data="{{projects: projects,hasMore: hasMore,ImgUrl:ImgUrl, showTipLoading:showTipLoading,isStart:isStart,timer:timer}}" />
+  </view>
+</view>
+<import src="../../pages/project/projectList.wxml" />

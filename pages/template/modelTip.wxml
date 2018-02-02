@@ -1,0 +1,10 @@
+<template name="modelTip">
+  <view class="fadeIn model-tip">
+    <form bindsubmit="closeModel" report-submit="true" class="box">
+      <view class="title">{{title}}</view>
+      <view class="intro">{{intro}}</view>
+      <button form-type="submit" class="bt" >确定</button>
+    </form>
+    <!--<view style="position:fixed;left:0;top:0; width:100%; height:100%; z-index: 900"  bindtap="closeModel"></view>-->
+  </view>
+</template>

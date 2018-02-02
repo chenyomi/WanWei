@@ -1,0 +1,124 @@
+<form bindsubmit="bindFormSubmit" report-submit="true">
+  <view wx:for="{{GoodsList}}" wx:key="{{index}}" class="item box-row">
+    <view data-index="{{index}}" data-id="{{item.ID}}" class="flex-1 sign-up">
+      <view class="box-row" style="margin-bottom:20rpx;background:#f9f9f9; padding-right:20rpx">
+        <image src="{{ImgUrl}}{{item.BigPicUrl}}" mode="aspectFill" style="width:120rpx; height:120rpx;"  data-id="{{item.ID}}" catchtap="goGoods"></image>
+        <view class="flex-1">
+          <view class="box-row">
+            <view class="flex-1 order-title" data-id="{{item.ID}}" catchtap="goGoods">
+              {{item.GoodsName}}
+            </view>
+            <view class="order-price" style="text-align:right;width:100rpx">
+              ￥{{item.Price}}
+            </view>
+          </view>
+          <view class="box-row">
+            <view class="flex-1">
+            </view>
+            <view class="flex-1" style="text-align:right">
+              <view class="del {{item.GoodsNumber>0? 'active' :false}}" data-index="{{index}}" catchtap="del">-</view>
+              <input type="number" class="input" value="{{item.GoodsNumber}}" readonly="true" />
+              <view class="add active" data-index="{{index}}" catchtap="add">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;">
+    <view class="padding-30">
+      <view class="box-row" style=" padding:10rpx 0">
+        <view class="flex-1 title">
+          总数量
+        </view>
+        <view class="flex-1 title" style="text-align:right">
+          {{GoodsNum}}
+        </view>
+      </view>
+      <view class="box-row" style="border-top:1px solid #e7e7e7; padding:10rpx 0">
+        <view class="flex-1 title">
+          总价
+        </view>
+        <view class="flex-1 title" style="text-align:right">
+          ￥{{sumPrice}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;margin-top:16rpx">
+    <view class="padding-30">
+      <view class="box-row" style=" padding:10rpx 0; align-items:center">
+        <view class="flex-1 title" style="color:#0079f4" catchtap="goAddress">
+          选择我的收货地址
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;">
+    <view class="padding-30">
+      <view class="box-row" style=" padding:10rpx 0; align-items:center">
+        <view class="flex-1 title">
+          手机号码
+        </view>
+        <view class="flex-1 title" style="text-align:right">
+          <input type="number" name="LinkPhone" value="{{LinkPhone}}" bindinput="bindinputByLinkPhone" class="text-input" placeholder="输入手机" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7">
+    <view class="padding-30">
+      <view class="box-row" style=" padding:10rpx 0; align-items:center">
+        <view class="flex-1 title">
+          联系人
+        </view>
+        <view class="flex-5 title" style="text-align:right">
+          <input type="text" name="ConsigneeName" value="{{ConsigneeName}}" bindinput="bindinputByConsigneeName" class="text-input" maxlength="25" placeholder="输入联系人" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7">
+    <view class="padding-30">
+      <view class="box-row" style=" padding:10rpx 0; align-items:center">
+        <view class="flex-1 title">
+          收货地址
+        </view>
+        <view class="flex-4 title" style="text-align:right">
+          <input type="text" name="Address" value="{{Address}}" class="text-input" bindinput="bindinputByAddress" maxlength="100" placeholder="输入收货地址" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;margin-top:16rpx">
+    <view class="padding-30">
+      <view class="box-row" style=" padding:10rpx 0; align-items:center">
+        <view class="flex-1 title">
+          备注
+        </view>
+        <view class="flex-7 title" style="text-align:right">
+          <input type="text" name="OrderMessage" value="{{OrderMessage}}" class="text-input" maxlength="100" placeholder="输入备注" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style="height:41px; width:100%;"></view>
+  <view class="fixed">
+    <view class="box-row" style="width:100%;border-top:1rpx solid #f0f0f0;align-items:center">
+      <view class="flex-2" catchtap="backpage" style="padding: 7px 30rpx; height:39px; box-sizing: border-box">
+        <image src="../../images/back.png" style="width:25px;height:25px;"></image>
+      </view>
+      <view class="flex-1">
+        <button class="button-float" form-type="submit" loading="{{!ButtonControll}}" disabled="{{!ButtonControll}}">提交订单</button>
+      </view>
+    </view>
+  </view>
+</form>
+<!--Model-->
+<block wx:if="{{showModel}}">
+  <template is="modelTip" data="{{title:'购买成功',intro:''}}" />
+</block>
+<!--Model-->
+<import src="../../pages/template/modelTip.wxml" />

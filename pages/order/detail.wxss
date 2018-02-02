@@ -1,0 +1,24 @@
+/* pages/orderDetail/orderDetail.wxss */
+
+.padding-30{padding: 30rpx}
+
+.title{font-size: 30rpx;margin-left: 30rpx;line-height: 45rpx;font-weight: bold}
+.intro{font-size: 26rpx;margin-left: 30rpx;line-height: 45rpx;color: #8a8a8a;height: 45rpx;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.price{font-size: 32rpx;margin-left: 30rpx;line-height: 45rpx;color: #f76120;font-weight: bold}
+.needPay{color:#333; line-height: 60rpx; font-size: 26rpx; border-top: 1px solid #f0f0f0}
+.back-fff{background: #fff;}
+
+.pay{background: #000;color: #fff;text-align: center;line-height:39px;font-size: 28rpx;width: 100%; border-radius: 0}
+.add{font-size: 26rpx;color: #333;border-top: 1px solid #e7e7e7;padding: 20rpx 0;}
+.add text,.add image{vertical-align:middle;}
+.info-title{font-size: 28rpx;padding: 30rpx 0; }
+.detail-title{color: #666}
+.detail-title image{width: 30rpx;height: 30rpx;}
+.info{font-size: 28rpx;line-height: 50rpx;color: #8a8a8a}
+.stat{text-align: center;font-size: 26rpx;line-height: 50rpx;color: #8a8a8a;padding-bottom: 20rpx}
+.comment{border:1px solid #f76120;color: #f76120;line-height: 50rpx;text-align: center;font-size: 24rpx;width: 90rpx;display: inline-block;}
+.fixed{padding: 0 30rpx;position: fixed;bottom: 0;left: 0;width: 100%;background: rgba(255,255,255,.9);height: 100rpx; vertical-align: middle;padding-top: 20rpx;border-top: 1px solid #f0f0f0}
+.foods{font-size: 26rpx; color: #666;line-height: 40rpx; text-align: center;}
+.detail-title image{margin-right: 8rpx;}
+.cmt {line-height: 50rpx; background: #f76120;color: #fff;border-radius: 8rpx; display: inline-block; padding: 0 20rpx;font-size: 28rpx;margin-right: 30rpx;}
+.loading-tip { width: 100%; height: 80rpx;line-height: 80rpx; text-align: center;color: #878787; font-size: 12px;}

@@ -1,0 +1,15 @@
+/* pages/project/start.wxss */
+@import "../../pages/project/projectList.wxss";
+page{background:#fff;}
+.nav{height: 40px;  background: #f0f0f0; width: 100%; position: fixed; left: 0; top: 0; z-index: 999}
+.nav text{font-size: 30rpx;   color: #555;line-height: 38px;}
+.nav text.active{color: #ff7519; border-bottom: 2px solid #ff7519; display: inline-block; font-weight: bold}
+
+.search {background: #f0f0f0; padding: 14rpx 14rpx;width: 100%;box-sizing: border-box; position: relative}
+.search .input{min-height: 50rpx; background: #fff; width:100%;border-radius: 8rpx;text-align: center; font-size: 26rpx;line-height: 50rpx;color: #878787}
+.search image{position: absolute; left: 42%; top: 24rpx; z-index: 999;width:30rpx;height: 30rpx;}
+
+.type-link view{border-radius:50%;overflow: hidden;}
+.type-link image{ filter:brightness(.5);}
+.type-link text{ position: absolute; left: 0; top: 0; color: #fff;line-height: 140rpx; text-align: center; display: inline-block; width: 100%;font-size: 32rpx}
+

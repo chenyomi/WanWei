@@ -1,0 +1,124 @@
+<block wx:if="{{showLoading}}">
+  <block wx:if="{{IsDelete == 'False'||IsEnable == 'True' || IsClosed == 'False'}}">
+    <view class="erro">
+      <image src="../../images/delbg.png" mode="widthFix" style="width:100%;margin:auto" catchtap="backpage"></image>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="container">
+      <form bindsubmit="bindFormSubmit" report-submit="true" style="width:100%;">
+        <view class="back_fff" style="border-bottom:1px solid #e7e7e7;">
+          <view class="padding-30">
+            <view class="box-row" style=" padding:10rpx 0; align-items:center">
+              <view class="flex-1 title text-center" style="font-size:34rpx;  font-weight: bold; color:#555">
+                {{ArticleTitle}}
+              </view>
+            </view> 
+          </view>
+        </view>
+         <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;margin-top:16rpx">
+          <view class="padding-30">
+            <view class="box-row" style=" padding:10rpx 0; align-items:center">
+              <view class="flex-1 title">
+                场次日期
+              </view>
+              <view class="flex-5 title" style="text-align:right">
+              <!-- <picker-view indicator-style="height: 50px;" style="width: 100%; height: 150px;" value="{{value}}" bindchange="bindChange">
+                <picker-view-column>
+                  <view wx:for="{{ArticleSiteList}}" wx:key="{{index}}" style="line-height: 50px">{{item.SignUpEndTime}}</view>
+                </picker-view-column>              
+              </picker-view> -->
+               <picker bindchange="bindChange" value="{{index}}" range="{{SiteList}}">
+                  <view class="picker">
+                   {{SiteList[index]}}
+                  </view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;">
+          <view class="padding-30">
+            <view class="box-row" style=" padding:10rpx 0; align-items:center">
+              <view class="flex-1 title">
+                出发日期
+              </view>
+              <view class="flex-1 title" style="text-align:right">
+                {{SignUpBeginTime}}
+              </view>
+            </view>
+          </view>
+        </view> -->
+        <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;margin-top:16rpx">
+          <view class="padding-30">
+            <view class="box-row" style=" padding:10rpx 0; align-items:center">
+              <view class="flex-1 title">
+                人数
+              </view>
+              <view class="flex-5 title" style="text-align:right">
+                <view class="del {{PeopleCount>0? 'active' :false}}" catchtap="{{PeopleCount>0? 'del' :''}}">-</view>
+                <input type="number" class="input" value="{{PeopleCount}}" readonly="true" />
+                <view class="add active" catchtap="add">+</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;">
+          <view class="padding-30">
+            <view class="box-row" style=" padding:10rpx 0; align-items:center">
+              <view class="flex-1 title">
+                联系人
+              </view>
+              <view class="flex-5 title" style="text-align:right">
+                <input value="{{ConsigneeName}}" type="text" name="ConsigneeName" class="text-input" bindinput="bindinputByConsigneeName" maxlength="200" placeholder="输入姓名" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="back_fff" style="border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;">
+          <view class="padding-30">
+            <view class="box-row" style=" padding:10rpx 0; align-items:center">
+              <view class="flex-1 title">
+                手机号码
+              </view>
+              <view class="flex-1 title" style="text-align:right">
+                <input value="{{LinkPhone}}" type="number" name="LinkPhone" class="text-input" bindinput="bindinputByLinkPhone" placeholder="输入手机" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view style="line-height:80rpx;color:#707070;padding:0 30rpx;font-size:26rpx">未成团自动退款！成团后款项不可退！</view>
+        <view class="fixed">
+          <view class="box-row" style="width:100%;border-top:1rpx solid #f0f0f0;align-items:center">
+            <view class="flex-1" catchtap="backpage" style="padding: 7px 30rpx; height:39px; box-sizing: border-box">
+              <image src="../../images/back.png" style="width:25px;height:25px;"></image>
+            </view>
+            <view class="flex-1" style="color:red; font-size:40rpx; text-align:right;padding-right:30rpx;">
+              ￥{{PayMoney}}
+            </view>
+            <view class="flex-1">
+              <button class="button-float" form-type="submit" loading="{{!ButtonControll}}" disabled="{{!ButtonControll}}">报名</button>
+            </view>
+          </view>
+        </view>
+        <view class="tip">
+          <image src="../../images/tip.png" class="xs-icon"></image>
+
+          <block wx:if="{{hasOrderBefore ==0}}">
+            完成付款订单生效,否则作废不保留名额!
+          </block>
+          <block wx:elif="{{hasOrderBefore ==1}}">
+            预约金额{{Article.BookingMoney}}:{{Article.BookingPayMoney}}，已为您节省{{Article.BookingPayMoney}}元！
+          </block>
+
+        </view>
+      </form>
+
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class="erro">
+    <image src="../../images/nodata.png" mode="widthFix" style="width:100%;margin:auto" catchtap="backpage"></image>
+  </view>
+</block>

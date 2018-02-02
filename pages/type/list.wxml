@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="list-scroll">
+    <template is="projectlist" data="{{projects: projects,hasMore: hasMore,ImgUrl:ImgUrl, showTipLoading:showTipLoading,isStart:isStart,timer:timer}}" />
+    <view class="space-40"></view>
+  </view>
+
+  <view class="box-row" style="width:100%;border-top:1px solid #f0f0f0;background:#fff; position:fixed;left:0; bottom:0;">
+    <view class="flex-1" catchtap="backpage" style="padding: 7px 15px; height:39px; box-sizing: border-box">
+      <image src="../../images/back.png" style="width:25px;height:25px;"></image>
+    </view>
+    <view class="flex-1">
+    </view>
+  </view>
+</view>
+
+<import src="../../pages/project/projectList.wxml" />
